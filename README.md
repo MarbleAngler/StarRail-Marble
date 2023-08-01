@@ -1,1 +1,1 @@
-# StarrailSocreExecute
+# StarrailScoreExecute
