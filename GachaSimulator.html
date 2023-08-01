@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(function(){
+
+	var xTotal     = 0; // 全体
+	var xPrevTen   = 0; // 前回の天井
+	var xMax90     = 0; // 前回の星5から
+	var xMax10     = 0; // 前回の星4以上から
+	var xPickUp5   = 0; // ピックアップ星5
+	var xRare5     = 0; // 星5当たった回数
+	var throughFlg = 0; // すり抜けフラグ
+	var hitUp      = 0; // 確率アップ
+	
+	// ガチャ処理 start
+	$('input').click(function(e){
+		var pickUp1 = 'カフカ'   // ピックアップ対象1 星5
+		var pickUp2 = 'ルカ'     // ピックアップ対象2 星4
+		var pickUp3 = 'セーバル' // ピックアップ対象3 星4
+		var pickUp4 = 'サンポ'   // ピックアップ対象4 星4
+		$('.xGacha01').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
+		$('.xGacha02').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
+		$('.xGacha03').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
+		$('.xGacha04').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
+		$('.xGacha05').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
+		$('.xGacha06').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
+		$('.xGacha07').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
+		$('.xGacha08').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
+		$('.xGacha09').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
+		$('.xGacha10').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
+		setColor($('.xGacha01'));
+		setColor($('.xGacha02'));
+		setColor($('.xGacha03'));
+		setColor($('.xGacha04'));
+		setColor($('.xGacha05'));
+		setColor($('.xGacha06'));
+		setColor($('.xGacha07'));
+		setColor($('.xGacha08'));
+		setColor($('.xGacha09'));
+		setColor($('.xGacha10'));
+	});
+	function gacha(pickUp1,pickUp2,pickUp3,pickUp4){
+		var seed = Math.floor( (Math.random() * 99999) + 1 ) / 1000; // 確率シード
+		var pickUpFlg = Math.floor( (Math.random() * 2) + 1 );       // ピックアップ対象フラグ
+		var pickUpRare4 = Math.floor( (Math.random() * 3) + 1 );     // 星4ピックアップシード
+		var hitFlg = false;
+		var ret = ''; // 返却値
+		
+		xMax90 += 1;
+		xMax10 += 1;
+		
+		if(xMax90 > 70) {
+			// 70連以降は徐々に確率が上がる
+			hitUp += 5;
+			seed -= hitUp;
+		}
+		
+		if (xMax90 == 90) {
+			// 天井
+			hitFlg = true;
+			if(throughFlg == 0) {
+				if(pickUpFlg == 1) {
+					// ピックアップ対象
+					xPickUp5 += 1; // ピックアップ星5
+					ret = '【星5】' + pickUp1;
+				} else {
+					// ピックアップ対象外
+					ret = '【星5】確率アップ対象外キャラ';
+					throughFlg = 1;
+				}
+			} else {
+				// 確定ピックアップ対象
+				throughFlg = 0;
+				xPickUp5 += 1; // ピックアップ星5
+				ret = '【星5】' + pickUp1;
+			}
+		} else if(xMax10 == 10) {
+			xMax10 = 0;
+			// 確定星4以上
+			if(seed <= 0.600) {
+				// 星5
+				hitFlg = true;
+				if(throughFlg == 0) {
+					if(pickUpFlg == 1) {
+						// ピックアップ対象
+						xPickUp5 += 1; // ピックアップ星5
+						ret = '【星5】' + pickUp1;
+					} else {
+						// ピックアップ対象外
+						ret = '【星5】確率アップ対象外キャラ';
+						throughFlg = 1;
+					}
+				} else {
+					// 確定ピックアップ対象
+					throughFlg = 0;
+					xPickUp5 += 1; // ピックアップ星5
+					ret = '【星5】' + pickUp1;
+				}
+			} else {
+				// 星4
+				if(pickUpFlg == 1) {
+					// ピックアップ対象
+					if(pickUpRare4 == 1) {
+						ret = '【星4】' + pickUp2;
+					} else if(pickUpRare4 == 2) {
+						ret = '【星4】' + pickUp3;
+					} else if(pickUpRare4 == 3) {
+						ret = '【星4】' + pickUp4;
+					}
+				} else {
+					// ピックアップ対象外
+					if( ((seed * 1000) % 2) == 1 ) {
+						ret = '【星4】光円錐';
+					} else {
+						ret = '【星4】確率アップ対象外キャラ';
+					}
+				}
+			}
+		} else {
+			// 天井ではない
+			if(seed <= 0.600) {
+				// 星5
+				xMax10 = 0;
+				hitFlg = true;
+				if(throughFlg == 0) {
+					if(pickUpFlg == 1) {
+						// ピックアップ対象
+						xPickUp5 += 1; // ピックアップ星5
+						ret = '【星5】' + pickUp1;
+					} else {
+						// ピックアップ対象外
+						ret = '【星5】確率アップ対象外キャラ';
+						throughFlg = 1;
+					}
+				} else {
+					// 確定ピックアップ対象
+					throughFlg = 0;
+					xPickUp5 += 1; // ピックアップ星5
+					ret = '【星5】' + pickUp1;
+				}
+			} else if(seed <= 5.700) {
+				// 星4
+				xMax10 = 0;
+				if(pickUpFlg == 1) {
+					// ピックアップ対象
+					if(pickUpRare4 == 1) {
+						ret = '【星4】' + pickUp2;
+					} else if(pickUpRare4 == 2) {
+						ret = '【星4】' + pickUp3;
+					} else if(pickUpRare4 == 3) {
+						ret = '【星4】' + pickUp4;
+					}
+				} else {
+					// ピックアップ対象外
+					if( ((seed * 1000) % 2) == 1 ) {
+						ret = '【星4】光円錐';
+					} else {
+						ret = '【星4】確率アップ対象外キャラ';
+					}
+				}
+			} else {
+				// 星3
+				ret = '【星3】光円錐';
+			}
+		}
+		
+		xTotal += 1; // 全体
+		
+		// 星5が当たった場合
+		if(hitFlg == true) {
+			xPrevTen  = xMax90; // 前回の天井
+			xMax90    = 0;      // 前回の星5から
+			xMax10    = 0;      // 前回の星4以上から
+			xRare5   += 1;      // 星5当たった回数
+			hitUp     = 0;
+		}
+		
+		$('.xTotal').text(xTotal);
+		$('.xPrevTen').text(xPrevTen);
+		$('.xMax90').text(xMax90);
+		$('.xPickUp5').text(xPickUp5);
+		$('.xRare5').text(xRare5);
+		
+		return ret;
+	}
+	
+	function setColor(thisObj){
+		if(thisObj.text().indexOf('【星5】確率アップ対象外キャラ') >= 0) {
+			thisObj.css('color', '#ff8c00');
+		} else if(thisObj.text().indexOf('【星4】光円錐') >= 0) {
+			thisObj.css('color', '#32cd32');
+		} else if(thisObj.text().indexOf('【星4】確率アップ対象外キャラ') >= 0) {
+			thisObj.css('color', '#32cd32');
+		} else if(thisObj.text().indexOf('【星5】') >= 0) {
+			thisObj.css('color', '#ff0000');
+		} else if(thisObj.text().indexOf('【星4】') >= 0) {
+			thisObj.css('color', '#9932cc');
+		} else {
+			thisObj.css('color', '#000000');
+		}
+	}
+	
+	// ガチャ処理 end
+});
+</script>
+<style>
+	td {
+		text-align: center;
+	}
+	input {
+		width: 90%;
+		font-size: 40px;
+	}
+	.xLabel {
+		text-align:center;
+	}
+	.xTotal, .xPrevTen, .xMax90, .xPickUp5, .xRare5 {
+		text-align:right;
+		padding-right:10px;
+	}
+	div {
+		text-align:left;
+		padding-left:10px;
+	}
+</style>
+</head>
+<body>
+<table border="1" cellpadding="0" cellspacing="0" width="300">
+	<tr height="40">
+		<td colspan="2">ガチャシミュレーター</td>
+	</tr>
+	<tr height="100">
+		<td colspan="2"><input type="button" value="10連"></td>
+	</tr>
+	<tr height="40">
+		<td width="140" class="xLabel">全体</td>
+		<td class="xTotal">0回</td>
+	</tr>
+	<tr height="40">
+		<td class="xLabel">前回の天井</td>
+		<td class="xPrevTen">0回</td>
+	</tr>
+	<tr height="40">
+		<td class="xLabel">前回の星5から</td>
+		<td class="xMax90">0回</td>
+	</tr>
+	<tr height="40">
+		<td class="xLabel">ピックアップ星5</td>
+		<td class="xPickUp5">0回</td>
+	</tr>
+	<tr height="40">
+		<td class="xLabel">星5当たった回数</td>
+		<td class="xRare5">0回</td>
+	</tr>
+	<tr height="300">
+		<td class="" colspan="2">
+			<div class="xGacha01"></div>
+			<div class="xGacha02"></div>
+			<div class="xGacha03"></div>
+			<div class="xGacha04"></div>
+			<div class="xGacha05"></div>
+			<div class="xGacha06"></div>
+			<div class="xGacha07"></div>
+			<div class="xGacha08"></div>
+			<div class="xGacha09"></div>
+			<div class="xGacha10"></div>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
