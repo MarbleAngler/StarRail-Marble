@@ -7,7 +7,7 @@
 $(function(){
 
 	var xTotal     = 0; // 全体
-	var xPrevTen   = 0; // 前回の天井
+	var xPrevTen   = 0; // 前回の星5までの回数
 	var xMax90     = 0; // 前回の星5から
 	var xMax10     = 0; // 前回の星4以上から
 	var xPickUp5   = 0; // ピックアップ星5
@@ -171,7 +171,7 @@ $(function(){
 		
 		// 星5が当たった場合
 		if(hitFlg == true) {
-			xPrevTen  = xMax90; // 前回の天井
+			xPrevTen  = xMax90; // 前回の星5までの回数
 			xMax90    = 0;      // 前回の星5から
 			xMax10    = 0;      // 前回の星4以上から
 			xRare5   += 1;      // 星5当たった回数
@@ -251,7 +251,7 @@ $(function(){
 		<td class="xTotal">0回</td>
 	</tr>
 	<tr height="40">
-		<td class="xLabel">前回の天井</td>
+		<td class="xLabel">前回の星5までの回数</td>
 		<td class="xPrevTen">0回</td>
 	</tr>
 	<tr height="40">
