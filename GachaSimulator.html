@@ -225,11 +225,17 @@ $(function(){
 		}
 	}
 	
-	$('.xCommand').click(function(e){
+	$('.xCommand1').click(function(e){
 		var yRare5 = 0;
-		while(yRare5 <= 1) {
+		while(yRare5 < 2) {
 			$('.xTen').trigger('click');
 			yRare5 = $('.yRare5').length;
+		}
+	});
+
+	$('.xCommand2').click(function(e){
+		while(xPickUp5 < 6) {
+			$('.xTen').trigger('click');
 		}
 	});
 	// ガチャ処理 end
@@ -383,10 +389,10 @@ $(function(){
 </head>
 <body>
 <div class="centering">
-<a tabindex="1000" href="https://marbleangler.github.io/StarRail-Marble/">HOME</a><a tabindex="-1" class="xCommand" style="margin-left:30px">　</a>
+<a tabindex="1000" href="https://marbleangler.github.io/StarRail-Marble/">HOME</a><a tabindex="-1" class="xCommand1" style="margin-left:30px">　</a>
 <table border="1" cellpadding="0" cellspacing="0" width="355">
 	<tr height="40">
-		<td class="xTitle" colspan="2">ガチャシミュレーター</td>
+		<td class="xTitle xCommand2" colspan="2">ガチャシミュレーター</td>
 	</tr>
 	<tr height="100" class="noselect">
 		<td style="border-right: none;"><a tabindex="1" class="btn_1 xOne"><span>単発</span></a></td>
