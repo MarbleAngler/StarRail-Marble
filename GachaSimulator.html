@@ -6,7 +6,13 @@
 <script>
 $(function(){
 
-	var xTotal     = 0; // 全体
+	var pickUp1    = 'カフカ'   // ピックアップ対象1 星5
+	var pickUp2    = 'ルカ'     // ピックアップ対象2 星4
+	var pickUp3    = 'セーバル' // ピックアップ対象3 星4
+	var pickUp4    = 'サンポ'   // ピックアップ対象4 星4
+	
+	var xTotal     = 0; // 全体ガチャ回数
+	var xTotalYen  = 0;
 	var xPrevTen   = 0; // 前回の星5までの回数
 	var xMax90     = 0; // 前回の星5から
 	var xMax10     = 0; // 前回の星4以上から
@@ -14,13 +20,23 @@ $(function(){
 	var xRare5     = 0; // 星5当たった回数
 	var throughFlg = 0; // すり抜けフラグ
 	var hitUp      = 0; // 確率アップ
-	
+
 	// ガチャ処理 start
-	$('input').click(function(e){
-		var pickUp1 = 'カフカ'   // ピックアップ対象1 星5
-		var pickUp2 = 'ルカ'     // ピックアップ対象2 星4
-		var pickUp3 = 'セーバル' // ピックアップ対象3 星4
-		var pickUp4 = 'サンポ'   // ピックアップ対象4 星4
+	$('.xOne').click(function(e){
+		$('.xGacha01').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
+		$('.xGacha02').text('');
+		$('.xGacha03').text('');
+		$('.xGacha04').text('');
+		$('.xGacha05').text('');
+		$('.xGacha06').text('');
+		$('.xGacha07').text('');
+		$('.xGacha08').text('');
+		$('.xGacha09').text('');
+		$('.xGacha10').text('');
+		setColor($('.xGacha01'));
+	});
+
+	$('.xTen').click(function(e){
 		$('.xGacha01').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
 		$('.xGacha02').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
 		$('.xGacha03').text(gacha(pickUp1,pickUp2,pickUp3,pickUp4));
@@ -178,7 +194,10 @@ $(function(){
 			hitUp     = 0;
 		}
 		
+		xTotalYen = String(xTotal * 240).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+		
 		$('.xTotal').text(xTotal + '回');
+		$('.xTotalYen').text(xTotalYen + '円');
 		$('.xPrevTen').text(xPrevTen + '回');
 		$('.xMax90').text(xMax90 + '回');
 		$('.xPickUp5').text(xPickUp5 + '回');
@@ -216,19 +235,33 @@ $(function(){
 		margin: 0 auto;
 		text-align:left;   /*全体を左揃えにする。*/
 	}
+	.xButton {
+		text-align: center;
+	}
+	.xOne {
+		margin-right:5px;
+	}
+	.xTen {
+		margin-left:5px;
+	}
 	td {
 		text-align: center;
 	}
 	input {
-		width: 90%;
+		width: 40%;
 		font-size: 40px;
 	}
 	.xLabel {
-		text-align:center;
+		text-align:left;
+		padding-left:5px;
 	}
-	.xTotal, .xPrevTen, .xMax90, .xPickUp5, .xRare5 {
+	.xTotal, .xTotalYen, .xPrevTen, .xMax90, .xPickUp5, .xRare5 {
 		text-align:right;
 		padding-right:10px;
+	}
+	.xGacha {
+		vertical-align:Top;
+		padding-Top:20px;
 	}
 	div {
 		text-align:left;
@@ -239,16 +272,20 @@ $(function(){
 <body>
 <div class="centering">
 <a href="https://marbleangler.github.io/StarRail-Marble/">HOME</a>
-<table border="1" cellpadding="0" cellspacing="0" width="300">
+<table border="1" cellpadding="0" cellspacing="0" width="355">
 	<tr height="40">
 		<td colspan="2">ガチャシミュレーター</td>
 	</tr>
 	<tr height="100">
-		<td colspan="2"><input type="button" tabindex="1" value="10連"></td>
+		<td colspan="2"><input type="button" tabindex="1" class="xOne" value="単発"><input type="button" tabindex="2" class="xTen" value="10連"></td>
+	</tr>
+	<tr height="40" class="xButton">
+		<td width="170" class="xLabel">全体ガチャ回数</td>
+		<td class="xTotal">0回</td>
 	</tr>
 	<tr height="40">
-		<td width="160" class="xLabel">全体</td>
-		<td class="xTotal">0回</td>
+		<td class="xLabel">全体費用(1回/240円)</td>
+		<td class="xTotalYen">0円</td>
 	</tr>
 	<tr height="40">
 		<td class="xLabel">前回の星5までの回数</td>
@@ -267,7 +304,7 @@ $(function(){
 		<td class="xRare5">0回</td>
 	</tr>
 	<tr height="300">
-		<td class="" colspan="2">
+		<td class="xGacha" colspan="2">
 			<div class="xGacha01"></div>
 			<div class="xGacha02"></div>
 			<div class="xGacha03"></div>
