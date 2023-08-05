@@ -4,6 +4,11 @@
 <meta charset="utf-8"/>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+$(function(){
+	$('.xTitle').click(function(e){
+		window.location.href = "https://twitter.com/MarBle_AnGleR";
+	});
+});
 </script>
 <style>
 	body {
@@ -18,18 +23,30 @@
 	td {
 		text-align: center;
 	}
+	.xTitle {
+		text-align: center;
+	}
+	.xTitleStr {
+		color: white;
+		font-weight: lighter;
+		font-size: 25px;
+	}
+	.xTitle {
+		background: -webkit-linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+		background: linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+	}
 </style>
 </head>
 <body>
 <div class="centering">
 <table border="1" cellpadding="0" cellspacing="0" width="300">
-	<tr height="40">
-		<td >MarbleAngler</td>
+	<tr height="50" class="xTitle">
+		<td ><a class="xTitleStr">MarbleAngler</a></td>
 	</tr>
-	<tr height="40">
+	<tr height="50">
 		<td width="140" class="xLabel"><a tabindex="1" href="https://marbleangler.github.io/StarRail-Marble/ScoreCalculate">遺物スコア計算表</a></td>
 	</tr>
-	<tr height="40">
+	<tr height="50">
 		<td class="xLabel"><a tabindex="2" href="https://marbleangler.github.io/StarRail-Marble/GachaSimulator">ガチャシミュレーター</a></td>
 	</tr>
 </table>
