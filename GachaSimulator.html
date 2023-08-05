@@ -207,6 +207,7 @@ $(function(){
 	}
 	
 	function setColor(thisObj){
+		thisObj.removeClass('yRare5');
 		if(thisObj.text().indexOf('【星5】確率アップ対象外キャラ') >= 0) {
 			thisObj.css('color', '#ff8c00');
 		} else if(thisObj.text().indexOf('【星4】光円錐') >= 0) {
@@ -215,6 +216,7 @@ $(function(){
 			thisObj.css('color', '#32cd32');
 		} else if(thisObj.text().indexOf('【星5】') >= 0) {
 			thisObj.css('color', '#ff0000');
+			thisObj.addClass('yRare5');
 		} else if(thisObj.text().indexOf('【星4】') >= 0) {
 			thisObj.css('color', '#9932cc');
 		} else {
@@ -222,6 +224,13 @@ $(function(){
 		}
 	}
 	
+	$('.xCommand').click(function(e){
+		var yRare5 = 0;
+		while(rare5 <= 2) {
+			$('.xTen').trigger('click');
+			yRare5 = $('.yRare5').length;
+		}
+	});
 	// ガチャ処理 end
 });
 </script>
@@ -373,7 +382,7 @@ $(function(){
 </head>
 <body>
 <div class="centering">
-<a tabindex="1000" href="https://marbleangler.github.io/StarRail-Marble/">HOME</a>
+<a tabindex="1000" href="https://marbleangler.github.io/StarRail-Marble/">HOME</a>><a tabindex="-1" class="xCommand" style="margin-left:285px">　</a>
 <table border="1" cellpadding="0" cellspacing="0" width="355">
 	<tr height="40">
 		<td class="xTitle" colspan="2">ガチャシミュレーター</td>
