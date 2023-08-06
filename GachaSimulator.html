@@ -69,9 +69,9 @@ $(function(){
 		xMax90 += 1;
 		xMax10 += 1;
 		
-		if(xMax90 > 70) {
+		if(xMax90 >= 75) {
 			// 70連以降は徐々に確率が上がる
-			hitUp += 0.5;
+			hitUp += 5;
 			seed -= hitUp;
 		}
 		
