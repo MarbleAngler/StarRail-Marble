@@ -18,7 +18,7 @@
 <script>
 $(function(){
 	$('.xTitle').click(function(e){
-		window.location.href = "https://twitter.com/MarBle_AnGleR";
+		window.location.href = "https://www.hoyolab.com/accountCenter/postList?id=88312973";
 	});
 });
 </script>
@@ -47,12 +47,44 @@ $(function(){
 		background: -webkit-linear-gradient(to right, rgb(255, 124, 111), #ffc994);
 		background: linear-gradient(to right, rgb(255, 124, 111), #ffc994);
 	}
+	/* バナー本体 */
+	.news-banner {
+		display: block;
+		width: 96.8%;
+		overflow: hidden;
+	}
+	/* バナー内コンテンツ */
+	.news-banner__content {
+		display: inline-block;
+		color: #df7700;
+		padding-left: 100%;
+		white-space: nowrap;
+		animation: animate-banner 10s linear infinite;
+	}
+	/* バナー内の要素をすべて選択 */
+	.news-banner__content > * {
+		display: inline-block;
+	}
+	/* 横にスクロールさせるアニメーション */
+	@keyframes animate-banner {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
 </style>
 <title>Marble Angler</title>
 </head>
 <body>
 <div class="centering">
-<table border="1" cellpadding="0" cellspacing="0" width="300">
+	<div class="news-banner">
+		<div class="news-banner__content">
+			<p href="https://twitter.com/MarBle_AnGleR" style="font-size:15px;">お知らせ：カフカ目指せ完凸！お前の為にこのゲームをインストールしたんだ！</p>
+		</div>
+	</div>
+	<table border="1" cellpadding="0" cellspacing="0" width="300">
 	<tr height="50" class="xTitle">
 		<td ><a class="xTitleStr">Marble Angler</a></td>
 	</tr>
