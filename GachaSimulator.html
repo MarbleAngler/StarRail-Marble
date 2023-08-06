@@ -241,6 +241,33 @@ $(function(){
 	// ガチャ処理 end
 });
 </script>
+<script>
+$(function(){
+
+	const hour = document.getElementById("hour");
+	const min = document.getElementById("min");
+	const sec = document.getElementById("sec");
+
+	function countdown() {
+	  const now = new Date(); // 現在時刻を取得
+	  const tomorrow = new Date(2023, 8 - 1, 9, 13); //次のピックアップ時間を取得
+	  const diff = tomorrow.getTime() - now.getTime(); // 時間の差を取得（ミリ秒）
+
+	  // ミリ秒から単位を修正
+	  const calcHour = Math.floor(diff / 1000 / 60 / 60);
+	  const calcMin = Math.floor(diff / 1000 / 60) % 60;
+	  const calcSec = Math.floor(diff / 1000) % 60;
+
+	  // 取得した時間を表示（2桁表示）
+	  hour.innerHTML = calcHour < 10 ? '0' + calcHour : calcHour;
+	  min.innerHTML = calcMin < 10 ? '0' + calcMin : calcMin;
+	  sec.innerHTML = calcSec < 10 ? '0' + calcSec : calcSec;
+	}
+	countdown();
+	setInterval(countdown,1000);
+
+});
+</script>
 <style>
 	body {
 		width:100%; /*ページ全体の幅は100%と指定する*/	
@@ -375,6 +402,13 @@ $(function(){
 		);
 	  transition: all 0.475s;
 	}
+	.time-container {
+		display: flex;
+		margin-left: 30px;
+	}
+	.time>span {
+		margin:5px;
+	}
 	.noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -389,7 +423,8 @@ $(function(){
 </head>
 <body>
 <div class="centering">
-<a tabindex="1000" href="https://marbleangler.github.io/StarRail-Marble/">HOME</a><a tabindex="-1" class="xCommand1" style="margin-left:30px;color:#eeeeee;">■</a>
+<div class="time-container"><p class="time"><a tabindex="-1" class="xCommand1" style="color:#eeeeee;">◇</a><a>更新まで：</a><span id="hour"></span>時間</p><p class="time"><span id="min"></span>分</p><p class="time"><span id="sec"></span>秒</p></div>
+<a tabindex="1000" href="https://marbleangler.github.io/StarRail-Marble/">HOME</a>
 <table border="1" cellpadding="0" cellspacing="0" width="355">
 	<tr height="40">
 		<td class="xTitle xCommand2" colspan="2">ガチャシミュレーター</td>
