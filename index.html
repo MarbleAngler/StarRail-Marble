@@ -42,10 +42,29 @@ $(function(){
 		color: white;
 		font-weight: lighter;
 		font-size: 25px;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 	}
 	.xTitle {
 		background: -webkit-linear-gradient(to right, rgb(255, 124, 111), #ffc994);
 		background: linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+	}
+	.xNotice {
+		border-right: none;
+    	color: inherit;
+		text-decoration: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 	}
 	/* バナー本体 */
 	.news-banner {
@@ -81,7 +100,7 @@ $(function(){
 <div class="centering">
 	<div class="news-banner">
 		<div class="news-banner__content">
-			<p href="https://twitter.com/MarBle_AnGleR" style="font-size:15px;">お知らせ：カフカ目指せ完凸！お前の為にこのゲームをインストールしたんだ！</p>
+			<a class="xNotice" href="https://twitter.com/MarBle_AnGleR" style="font-size:15px;">お知らせ：カフカ目指せ完凸！お前の為にこのゲームをインストールしたんだ！</a>
 		</div>
 	</div>
 	<table border="1" cellpadding="0" cellspacing="0" width="300">
