@@ -22,6 +22,9 @@ $(function(){
 	});
 });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.6/dayjs.min.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
 <style>
 	body {
 		width:100%; /*ページ全体の幅は100%と指定する*/	
@@ -93,6 +96,44 @@ $(function(){
 			transform: translateX(-100%);
 		}
 	}
+	.nowtime{
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%, 0);
+		width: 180px;
+		padding : 10px 10px 5px 10px;
+		border-radius: 0px 0px 10px 10px;
+		/* ▼ ここで背景の色を変更 ▼ */
+		background: rgba(255,255,255,0.7);
+		/* ▲ ここで背景の色を変更 ▲ */
+		text-decoration: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+	}
+		
+	#time{
+		line-height: 1em;/* 行間 */
+		letter-spacing: 3px;/* 字間 */
+		font-size: 60px;
+		/* ▼ ここで線の色を変更 ▼ */
+		border-bottom: solid 2px;
+		/* ▲ ここで線の色を変更 ▲ */
+	}
+
+	#date{
+		line-height: 1.5em;/* 行間 */
+		letter-spacing: 3px;
+		font-size: 30px;
+	}
+		
+	#colon{
+		vertical-align: 7%;
+	}
 </style>
 <title>Marble Angler</title>
 </head>
@@ -114,6 +155,22 @@ $(function(){
 		<td class="xLabel"><a tabindex="2" href="https://marbleangler.github.io/StarRail-Marble/GachaSimulator">ガチャシミュレーター</a></td>
 	</tr>
 </table>
+<div class="nowtime">
+    
+	<!-- ここから時刻 -->
+	<p id="t"/>
+	  <script language="JavaScript">
+	  const day = function() {
+		const dt = dayjs(new Date());
+		const element = document.getElementById("t");
+		  element.innerHTML = `<div id="time">${dt.format('HH')}<span id="colon">:</span>${dt.format('mm')}</div>
+							   <div id="date">${dt.format('MM/DD')}</div>`;
+	  };
+	  setInterval(day, 1000);
+	  </script>
+	<!-- ここまで時刻 -->
+	
+	</div>
 </div>
 </body>
 </html>
