@@ -19,10 +19,10 @@
 <script>
 $(function(){
 
-	var pickUp1    = '丹恒・飲月'   // ピックアップ対象1 星5
-	var pickUp2    = '御空'     // ピックアップ対象2 星4
-	var pickUp3    = 'アスター' // ピックアップ対象3 星4
-	var pickUp4    = '三月なのか'   // ピックアップ対象4 星4
+	var pickUp1    = '符玄'   // ピックアップ対象1 星5
+	var pickUp2    = 'リンクス'     // ピックアップ対象2 星4
+	var pickUp3    = 'フック' // ピックアップ対象3 星4
+	var pickUp4    = 'ペラ'   // ピックアップ対象4 星4
 	
 	var xTotal     = 0; // 全体ガチャ回数
 	var xTotalYen  = 0; // 全体費用(1回/240円)
@@ -262,13 +262,13 @@ $(function(){
 
 	function countdown() {
 		const now = new Date(); // 現在時刻を取得
-		var tomorrow = new Date(2023, 8 - 1, 30, 12); // 次のピックアップ時間を取得
+		var tomorrow = new Date(2023, 9 - 1, 20, 13); // 次のピックアップ時間を取得
 		if(tomorrow <= now) {
-			tomorrow = new Date(2023, 9 - 1, 20, 13); // 次の次のピックアップ時間を取得
-			pickUp1    = '符玄'   // ピックアップ対象1 星5
-			pickUp2    = 'リンクス'     // ピックアップ対象2 星4
-			pickUp3    = 'フック' // ピックアップ対象3 星4
-			pickUp4    = 'ペラ'   // ピックアップ対象4 星4
+			tomorrow = new Date(2023, 10 - 1, 11, 12); // 次の次のピックアップ時間を取得
+			pickUp1    = '鏡流'   // ピックアップ対象1 星5
+			pickUp2    = '停雲'     // ピックアップ対象2 星4
+			pickUp3    = '青雀' // ピックアップ対象3 星4
+			pickUp4    = 'サンポ'   // ピックアップ対象4 星4
 		}
 		const diff = tomorrow.getTime() - now.getTime(); // 時間の差を取得（ミリ秒）
 
