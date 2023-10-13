@@ -27,10 +27,10 @@
 <script>
 $(function(){
 
-	var pickUp1    = '符玄'   // ピックアップ対象1 星5
-	var pickUp2    = 'リンクス'     // ピックアップ対象2 星4
-	var pickUp3    = 'フック' // ピックアップ対象3 星4
-	var pickUp4    = 'ペラ'   // ピックアップ対象4 星4
+	var pickUp1    = '鏡流'   // ピックアップ対象1 星5
+	var pickUp2    = '停雲'     // ピックアップ対象2 星4
+	var pickUp3    = '青雀' // ピックアップ対象3 星4
+	var pickUp4    = 'サンポ'   // ピックアップ対象4 星4
 	
 	var xTotal     = 0; // 全体ガチャ回数
 	var xTotalYen  = 0; // 全体費用(1回/240円)
@@ -270,9 +270,9 @@ $(function(){
 
 	function countdown() {
 		const now = new Date(); // 現在時刻を取得
-		var tomorrow = new Date(2023, 9 - 1, 20, 13); // 次のピックアップ時間を取得
+		var tomorrow = new Date(2023, 10 - 1, 27, 13); // 次のピックアップ時間を取得
 		if(tomorrow <= now) {
-			tomorrow = new Date(2023, 10 - 1, 11, 12); // 次の次のピックアップ時間を取得
+			tomorrow = new Date(2023, 11 - 1, 15, 12); // 次の次のピックアップ時間を取得
 			pickUp1    = '鏡流'   // ピックアップ対象1 星5
 			pickUp2    = '停雲'     // ピックアップ対象2 星4
 			pickUp3    = '青雀' // ピックアップ対象3 星4
@@ -309,8 +309,8 @@ $(function(){
 		text-align: center;
 	}
 	.xTitle {
-		background: -webkit-linear-gradient(to right, #1eff83, #f81eff);
-		background: linear-gradient(to right, #1eff83, #f81eff);
+		background: -webkit-linear-gradient(to right, #1e9aff, #ffe91e);
+		background: linear-gradient(to right, #1e9aff, #ffe91e);
 		color: #ffffff;
 		font-weight:bold;
   -webkit-touch-callout: none; /* iOS Safari */
@@ -388,8 +388,8 @@ $(function(){
 		border-radius: inherit;
 		background: linear-gradient(
 			82.3deg,
-			#1eff83,
-			#12bd5f
+			#1e9aff,
+			#167acc
 		);
 	  transition: all 0.475s;
 	}
@@ -431,8 +431,8 @@ $(function(){
 		border-radius: inherit;
 		background: linear-gradient(
 			82.3deg,
-			#f81eff,
-			#bf11c5
+			#ffe91e,
+			#bbaa10
 		);
 	  transition: all 0.475s;
 	}
