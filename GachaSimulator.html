@@ -27,11 +27,17 @@
 <script>
 $(function(){
 
-	var pickUp1    = '鏡流'   // ピックアップ対象1 星5
-	var pickUp2    = '停雲'     // ピックアップ対象2 星4
-	var pickUp3    = '青雀' // ピックアップ対象3 星4
-	var pickUp4    = 'サンポ'   // ピックアップ対象4 星4
+	var pickUp1;  // ピックアップ対象1 星5
+	var pickUp2;  // ピックアップ対象2 星4
+	var pickUp3;  // ピックアップ対象3 星4
+	var pickUp4;  // ピックアップ対象4 星4
 	
+
+	pickUp1    = 'トパーズ';   // ピックアップ対象1 星5
+	pickUp2    = '桂乃芬';     // ピックアップ対象2 星4
+	pickUp3    = 'ルカ'; // ピックアップ対象3 星4
+	pickUp4    = '素裳';   // ピックアップ対象4 星4
+
 	var xTotal     = 0; // 全体ガチャ回数
 	var xTotalYen  = 0; // 全体費用(1回/240円)
 	var xPrevTen   = 0; // 前回の星5までの回数
@@ -273,10 +279,10 @@ $(function(){
 		var tomorrow = new Date(2023, 10 - 1, 27, 13); // 次のピックアップ時間を取得
 		if(tomorrow <= now) {
 			tomorrow = new Date(2023, 11 - 1, 15, 12); // 次の次のピックアップ時間を取得
-			pickUp1    = 'トパーズ'   // ピックアップ対象1 星5
-			pickUp2    = '桂乃芬'     // ピックアップ対象2 星4
-			pickUp3    = 'ルカ' // ピックアップ対象3 星4
-			pickUp4    = '素裳'   // ピックアップ対象4 星4
+			pickUp1    = 'トパーズ';  // ピックアップ対象1 星5
+			pickUp2    = '桂乃芬';    // ピックアップ対象2 星4
+			pickUp3    = 'ルカ';      // ピックアップ対象3 星4
+			pickUp4    = '素裳';      // ピックアップ対象4 星4
 		}
 		const diff = tomorrow.getTime() - now.getTime(); // 時間の差を取得（ミリ秒）
 
