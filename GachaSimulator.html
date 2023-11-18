@@ -33,10 +33,10 @@ $(function(){
 	var pickUp4;  // ピックアップ対象4 星4
 	
 
-	pickUp1    = 'トパーズ';   // ピックアップ対象1 星5
-	pickUp2    = '桂乃芬';     // ピックアップ対象2 星4
-	pickUp3    = 'ルカ'; // ピックアップ対象3 星4
-	pickUp4    = '素裳';   // ピックアップ対象4 星4
+	pickUp1    = 'フォフォ';   // ピックアップ対象1 星5
+	pickUp2    = '丹恒';     // ピックアップ対象2 星4
+	pickUp3    = 'アーラン'; // ピックアップ対象3 星4
+	pickUp4    = 'セーバル';   // ピックアップ対象4 星4
 
 	var xTotal     = 0; // 全体ガチャ回数
 	var xTotalYen  = 0; // 全体費用(1回/240円)
@@ -276,13 +276,13 @@ $(function(){
 
 	function countdown() {
 		const now = new Date(); // 現在時刻を取得
-		var tomorrow = new Date(2023, 10 - 1, 27, 13); // 次のピックアップ時間を取得
+		var tomorrow = new Date(2023, 12 - 1, 6, 13); // 次のピックアップ時間を取得
 		if(tomorrow <= now) {
-			tomorrow = new Date(2023, 11 - 1, 15, 12); // 次の次のピックアップ時間を取得
-			pickUp1    = 'トパーズ';  // ピックアップ対象1 星5
-			pickUp2    = '桂乃芬';    // ピックアップ対象2 星4
-			pickUp3    = 'ルカ';      // ピックアップ対象3 星4
-			pickUp4    = '素裳';      // ピックアップ対象4 星4
+			tomorrow = new Date(2023, 12 - 1, 27, 12); // 次の次のピックアップ時間を取得
+			pickUp1    = 'アルジェンティ';  // ピックアップ対象1 星5
+			pickUp2    = 'アスター';       // ピックアップ対象2 星4
+			pickUp3    = 'リンクス';       // ピックアップ対象3 星4
+			pickUp4    = '寒鴉';           // ピックアップ対象4 星4
 		}
 		const diff = tomorrow.getTime() - now.getTime(); // 時間の差を取得（ミリ秒）
 
@@ -315,8 +315,8 @@ $(function(){
 		text-align: center;
 	}
 	.xTitle {
-		background: -webkit-linear-gradient(to right, #1e9aff, #ffe91e);
-		background: linear-gradient(to right, #1e9aff, #ffe91e);
+		background: -webkit-linear-gradient(to right, #2deccc, #df1530);
+		background: linear-gradient(to right, #2deccc, #df1530);
 		color: #ffffff;
 		font-weight:bold;
   -webkit-touch-callout: none; /* iOS Safari */
@@ -394,8 +394,8 @@ $(function(){
 		border-radius: inherit;
 		background: linear-gradient(
 			82.3deg,
-			#1e9aff,
-			#167acc
+			#2deccc,
+			#24ad96
 		);
 	  transition: all 0.475s;
 	}
@@ -437,8 +437,8 @@ $(function(){
 		border-radius: inherit;
 		background: linear-gradient(
 			82.3deg,
-			#ffe91e,
-			#bbaa10
+			#df1530,
+			#a81327
 		);
 	  transition: all 0.475s;
 	}
